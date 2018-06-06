@@ -30,6 +30,12 @@ api.get('/private',  auth.isAuth, (req, res) =>  {
     res.status(200).send({ message: `Access Granted` });
 });
 
+/* Test routes */
+api.post('/register', (req, res) => {
+   res.send({
+       message: `Hello ${req.body.email}! Your user was registered!`
+   })
+});
 
 module.exports = api;
 

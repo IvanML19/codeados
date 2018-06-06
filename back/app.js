@@ -1,15 +1,20 @@
 // funcionalidades express
-'use strict'
+'use strict';
 
-const express = require('express')
-const bodyParser = require('body-parser')
-const app = express()
+// modules to require
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const morgan = require('morgan');
 
-// routes
-const api = require('./routes/api.js')
+// routes - TODO: it shall be changed asap for startup.js and dev.js
+const api = require('./routes/api.js');
 
-app.use(bodyParser.urlencoded( {extended: false} ))
-app.use(bodyParser.json())
-app.use('/api', api)
+const app = express();
+app.use(morgan('combine'));
+app.use(bodyParser.urlencoded( {extended: false} ));
+app.use(bodyParser.json());
+app.use(cors());
+app.use('/api', api);
 
-module.exports = app
+module.exports = app;
